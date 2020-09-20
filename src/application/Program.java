@@ -18,8 +18,9 @@ public class Program extends javax.swing.JFrame {
     }
     
     //Número que será gerado nas ações dos botões
-    public Double number;
-    public String auxString;
+    public double numberVal = 0.0;
+    public boolean nextNumber;
+    public Character option = null;
     
 
     /** This method is called from within the constructor to
@@ -33,12 +34,12 @@ public class Program extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        labelResult = new javax.swing.JTextField();
+        fieldResult = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         numberButton7 = new javax.swing.JButton();
         numberButton8 = new javax.swing.JButton();
         numberButton9 = new javax.swing.JButton();
-        buttonCE = new javax.swing.JButton();
+        buttonC = new javax.swing.JButton();
         numberButton4 = new javax.swing.JButton();
         numberButton5 = new javax.swing.JButton();
         numberButton6 = new javax.swing.JButton();
@@ -63,17 +64,17 @@ public class Program extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        labelResult.setEditable(false);
-        labelResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        labelResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        labelResult.setText("0");
-        labelResult.setPreferredSize(new java.awt.Dimension(250, 54));
-        labelResult.addActionListener(new java.awt.event.ActionListener() {
+        fieldResult.setEditable(false);
+        fieldResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        fieldResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        fieldResult.setText("0");
+        fieldResult.setPreferredSize(new java.awt.Dimension(250, 54));
+        fieldResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labelResultActionPerformed(evt);
+                fieldResultActionPerformed(evt);
             }
         });
-        jPanel1.add(labelResult);
+        jPanel1.add(fieldResult);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel2.setLayout(new java.awt.GridLayout(4, 4));
@@ -108,15 +109,15 @@ public class Program extends javax.swing.JFrame {
         });
         jPanel2.add(numberButton9);
 
-        buttonCE.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonCE.setText("CE");
-        buttonCE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonCE.addActionListener(new java.awt.event.ActionListener() {
+        buttonC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonC.setText("C");
+        buttonC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCEActionPerformed(evt);
+                buttonCActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonCE);
+        jPanel2.add(buttonC);
 
         numberButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         numberButton4.setText("4");
@@ -151,6 +152,11 @@ public class Program extends javax.swing.JFrame {
         buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonMais.setText("+");
         buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMaisActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonMais);
 
         numberButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -265,107 +271,72 @@ public class Program extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void labelResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelResultActionPerformed
+    private void fieldResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldResultActionPerformed
         
-    }//GEN-LAST:event_labelResultActionPerformed
+    }//GEN-LAST:event_fieldResultActionPerformed
 
     private void numberButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton1ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("1");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "1");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "1", nextNumber);
     }//GEN-LAST:event_numberButton1ActionPerformed
 
     private void buttonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIgualActionPerformed
         
     }//GEN-LAST:event_buttonIgualActionPerformed
 
-    private void buttonCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCEActionPerformed
-        labelResult.setText("0");
-    }//GEN-LAST:event_buttonCEActionPerformed
+    private void buttonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCActionPerformed
+        fieldResult.setText("0");
+        numberVal = 0.0;
+    }//GEN-LAST:event_buttonCActionPerformed
 
     private void numberButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton2ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("2");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "2");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "2", nextNumber);
     }//GEN-LAST:event_numberButton2ActionPerformed
 
     private void numberButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton3ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("3");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "3");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "3", nextNumber);
     }//GEN-LAST:event_numberButton3ActionPerformed
 
     private void numberButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton4ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("4");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "4");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "4", nextNumber);
     }//GEN-LAST:event_numberButton4ActionPerformed
 
     private void numberButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton5ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("5");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "5");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "5", nextNumber);
     }//GEN-LAST:event_numberButton5ActionPerformed
 
     private void numberButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton6ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("6");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "6");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "6", nextNumber);
     }//GEN-LAST:event_numberButton6ActionPerformed
 
     private void numberButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton7ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("7");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "7");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "7", nextNumber);
     }//GEN-LAST:event_numberButton7ActionPerformed
 
     private void numberButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton8ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("8");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "8");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "8", nextNumber);
     }//GEN-LAST:event_numberButton8ActionPerformed
 
     private void numberButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton9ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("9");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "9");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "9", nextNumber);
     }//GEN-LAST:event_numberButton9ActionPerformed
 
     private void numberButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton0ActionPerformed
-        if (labelResult.getText().equals("0")) {
-            labelResult.setText("0");
-        }
-        else {
-            labelResult.setText(labelResult.getText() + "0");
-        }
+        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "0", nextNumber);
     }//GEN-LAST:event_numberButton0ActionPerformed
+
+    private void buttonMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMaisActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+           
+            numberVal = numberVal + Double.parseDouble(fieldResult.getText());
+            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            }
+            else {
+                fieldResult.setText(String.valueOf((int)numberVal));
+            }
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonMaisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,13 +374,14 @@ public class Program extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCE;
+    private javax.swing.JButton buttonC;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonIgual;
     private javax.swing.JButton buttonMais;
     private javax.swing.JButton buttonMenos;
     private javax.swing.JButton buttonPonto;
     private javax.swing.JButton buttonVezes;
+    private javax.swing.JTextField fieldResult;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -420,7 +392,6 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
-    private javax.swing.JTextField labelResult;
     private javax.swing.JButton numberButton0;
     private javax.swing.JButton numberButton1;
     private javax.swing.JButton numberButton2;
