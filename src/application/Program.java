@@ -17,11 +17,10 @@ public class Program extends javax.swing.JFrame {
         initComponents();
     }
     
+    //Número que será gerado nas ações dos botões
     public Double number;
+    public String auxString;
     
-    public void numberAddition(Double number) {
-        this.number += number;
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -34,24 +33,24 @@ public class Program extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        labelResult = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
+        numberButton7 = new javax.swing.JButton();
+        numberButton8 = new javax.swing.JButton();
+        numberButton9 = new javax.swing.JButton();
+        buttonCE = new javax.swing.JButton();
+        numberButton4 = new javax.swing.JButton();
+        numberButton5 = new javax.swing.JButton();
+        numberButton6 = new javax.swing.JButton();
+        buttonMais = new javax.swing.JButton();
+        numberButton1 = new javax.swing.JButton();
+        numberButton2 = new javax.swing.JButton();
+        numberButton3 = new javax.swing.JButton();
+        buttonMenos = new javax.swing.JButton();
+        buttonPonto = new javax.swing.JButton();
+        numberButton0 = new javax.swing.JButton();
+        buttonIgual = new javax.swing.JButton();
+        buttonVezes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -64,89 +63,160 @@ public class Program extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("0");
-        jTextField1.setPreferredSize(new java.awt.Dimension(250, 54));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        labelResult.setEditable(false);
+        labelResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        labelResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        labelResult.setText("0");
+        labelResult.setPreferredSize(new java.awt.Dimension(250, 54));
+        labelResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                labelResultActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
+        jPanel1.add(labelResult);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
         jPanel2.setLayout(new java.awt.GridLayout(4, 4));
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton6.setText("7");
-        jPanel2.add(jButton6);
-
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton7.setText("8");
-        jPanel2.add(jButton7);
-
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton11.setText("9");
-        jPanel2.add(jButton11);
-
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton8.setText("CE");
-        jPanel2.add(jButton8);
-
-        jButton10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton10.setText("4");
-        jPanel2.add(jButton10);
-
-        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton12.setText("5");
-        jPanel2.add(jButton12);
-
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton13.setText("6");
-        jPanel2.add(jButton13);
-
-        jButton14.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton14.setText("+");
-        jPanel2.add(jButton14);
-
-        jButton16.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton16.setText("1");
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        numberButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton7.setText("7");
+        numberButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                numberButton7ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton16);
+        jPanel2.add(numberButton7);
 
-        jButton17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton17.setText("2");
-        jPanel2.add(jButton17);
+        numberButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton8.setText("8");
+        numberButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton8ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton8);
 
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton18.setText("3");
-        jPanel2.add(jButton18);
+        numberButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton9.setText("9");
+        numberButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton9ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton9);
 
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton19.setText("-");
-        jPanel2.add(jButton19);
+        buttonCE.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonCE.setText("CE");
+        buttonCE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonCE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCEActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttonCE);
 
-        jButton21.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton21.setText(",");
-        jPanel2.add(jButton21);
+        numberButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton4.setText("4");
+        numberButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton4);
 
-        jButton22.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton22.setText("0");
-        jPanel2.add(jButton22);
+        numberButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton5.setText("5");
+        numberButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton5);
 
-        jButton23.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton23.setText("=");
-        jPanel2.add(jButton23);
+        numberButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton6.setText("6");
+        numberButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton6ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton6);
 
-        jButton24.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton24.setText("x");
-        jPanel2.add(jButton24);
+        buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMais.setText("+");
+        buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(buttonMais);
+
+        numberButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton1.setText("1");
+        numberButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton1);
+
+        numberButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton2.setText("2");
+        numberButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton2);
+
+        numberButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton3.setText("3");
+        numberButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton3);
+
+        buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMenos.setText("-");
+        buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(buttonMenos);
+
+        buttonPonto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonPonto.setText(",");
+        buttonPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(buttonPonto);
+
+        numberButton0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton0.setText("0");
+        numberButton0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        numberButton0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberButton0ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(numberButton0);
+
+        buttonIgual.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonIgual.setText("=");
+        buttonIgual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonIgual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonIgualActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttonIgual);
+
+        buttonVezes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonVezes.setText("x");
+        buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(buttonVezes);
 
         jMenu1.setText("Opções");
 
@@ -195,13 +265,107 @@ public class Program extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void labelResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelResultActionPerformed
+        
+    }//GEN-LAST:event_labelResultActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+    private void numberButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton1ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("1");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "1");
+        }
+    }//GEN-LAST:event_numberButton1ActionPerformed
+
+    private void buttonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIgualActionPerformed
+        
+    }//GEN-LAST:event_buttonIgualActionPerformed
+
+    private void buttonCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCEActionPerformed
+        labelResult.setText("0");
+    }//GEN-LAST:event_buttonCEActionPerformed
+
+    private void numberButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton2ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("2");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "2");
+        }
+    }//GEN-LAST:event_numberButton2ActionPerformed
+
+    private void numberButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton3ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("3");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "3");
+        }
+    }//GEN-LAST:event_numberButton3ActionPerformed
+
+    private void numberButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton4ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("4");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "4");
+        }
+    }//GEN-LAST:event_numberButton4ActionPerformed
+
+    private void numberButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton5ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("5");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "5");
+        }
+    }//GEN-LAST:event_numberButton5ActionPerformed
+
+    private void numberButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton6ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("6");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "6");
+        }
+    }//GEN-LAST:event_numberButton6ActionPerformed
+
+    private void numberButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton7ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("7");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "7");
+        }
+    }//GEN-LAST:event_numberButton7ActionPerformed
+
+    private void numberButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton8ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("8");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "8");
+        }
+    }//GEN-LAST:event_numberButton8ActionPerformed
+
+    private void numberButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton9ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("9");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "9");
+        }
+    }//GEN-LAST:event_numberButton9ActionPerformed
+
+    private void numberButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton0ActionPerformed
+        if (labelResult.getText().equals("0")) {
+            labelResult.setText("0");
+        }
+        else {
+            labelResult.setText(labelResult.getText() + "0");
+        }
+    }//GEN-LAST:event_numberButton0ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,23 +403,13 @@ public class Program extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCE;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton buttonIgual;
+    private javax.swing.JButton buttonMais;
+    private javax.swing.JButton buttonMenos;
+    private javax.swing.JButton buttonPonto;
+    private javax.swing.JButton buttonVezes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -266,7 +420,17 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField labelResult;
+    private javax.swing.JButton numberButton0;
+    private javax.swing.JButton numberButton1;
+    private javax.swing.JButton numberButton2;
+    private javax.swing.JButton numberButton3;
+    private javax.swing.JButton numberButton4;
+    private javax.swing.JButton numberButton5;
+    private javax.swing.JButton numberButton6;
+    private javax.swing.JButton numberButton7;
+    private javax.swing.JButton numberButton8;
+    private javax.swing.JButton numberButton9;
     // End of variables declaration//GEN-END:variables
 
 }
