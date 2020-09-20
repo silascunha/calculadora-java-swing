@@ -18,6 +18,10 @@ public class Program extends javax.swing.JFrame {
     }
     
     public Double number;
+    
+    public void numberAddition(Double number) {
+        this.number += number;
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
