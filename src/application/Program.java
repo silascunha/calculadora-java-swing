@@ -39,19 +39,21 @@ public class Program extends javax.swing.JFrame {
         numberButton7 = new javax.swing.JButton();
         numberButton8 = new javax.swing.JButton();
         numberButton9 = new javax.swing.JButton();
-        buttonC = new javax.swing.JButton();
         numberButton4 = new javax.swing.JButton();
         numberButton5 = new javax.swing.JButton();
         numberButton6 = new javax.swing.JButton();
-        buttonMais = new javax.swing.JButton();
         numberButton1 = new javax.swing.JButton();
         numberButton2 = new javax.swing.JButton();
         numberButton3 = new javax.swing.JButton();
-        buttonMenos = new javax.swing.JButton();
         buttonPonto = new javax.swing.JButton();
         numberButton0 = new javax.swing.JButton();
         buttonIgual = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        buttonC = new javax.swing.JButton();
+        buttonMais = new javax.swing.JButton();
+        buttonMenos = new javax.swing.JButton();
         buttonVezes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,7 +70,7 @@ public class Program extends javax.swing.JFrame {
         fieldResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         fieldResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         fieldResult.setText("0");
-        fieldResult.setPreferredSize(new java.awt.Dimension(250, 54));
+        fieldResult.setPreferredSize(new java.awt.Dimension(260, 60));
         fieldResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldResultActionPerformed(evt);
@@ -109,16 +111,6 @@ public class Program extends javax.swing.JFrame {
         });
         jPanel2.add(numberButton9);
 
-        buttonC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonC.setText("C");
-        buttonC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCActionPerformed(evt);
-            }
-        });
-        jPanel2.add(buttonC);
-
         numberButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         numberButton4.setText("4");
         numberButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -148,16 +140,6 @@ public class Program extends javax.swing.JFrame {
             }
         });
         jPanel2.add(numberButton6);
-
-        buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonMais.setText("+");
-        buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonMais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMaisActionPerformed(evt);
-            }
-        });
-        jPanel2.add(buttonMais);
 
         numberButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         numberButton1.setText("1");
@@ -189,11 +171,6 @@ public class Program extends javax.swing.JFrame {
         });
         jPanel2.add(numberButton3);
 
-        buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonMenos.setText("-");
-        buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(buttonMenos);
-
         buttonPonto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonPonto.setText(",");
         buttonPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -219,10 +196,41 @@ public class Program extends javax.swing.JFrame {
         });
         jPanel2.add(buttonIgual);
 
+        jPanel3.setLayout(new java.awt.GridLayout(5, 0));
+
+        buttonC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonC.setText("C");
+        buttonC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCActionPerformed(evt);
+            }
+        });
+        jPanel3.add(buttonC);
+
+        buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMais.setText("+");
+        buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMaisActionPerformed(evt);
+            }
+        });
+        jPanel3.add(buttonMais);
+
+        buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMenos.setText("-");
+        buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(buttonMenos);
+
         buttonVezes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonVezes.setText("x");
         buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(buttonVezes);
+        jPanel3.add(buttonVezes);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setText("÷");
+        jPanel3.add(jButton1);
 
         jMenu1.setText("Opções");
 
@@ -258,14 +266,21 @@ public class Program extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -382,6 +397,7 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JButton buttonPonto;
     private javax.swing.JButton buttonVezes;
     private javax.swing.JTextField fieldResult;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -389,6 +405,7 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
