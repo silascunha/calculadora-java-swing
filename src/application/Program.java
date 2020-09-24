@@ -6,12 +6,16 @@
 
 package application;
 
+import java.awt.Color;
+import java.awt.Shape;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author silas
  */
 public class Program extends javax.swing.JFrame {
-
+    
     /** Creates new form Program */
     public Program() {
         initComponents();
@@ -53,7 +57,7 @@ public class Program extends javax.swing.JFrame {
         buttonMais = new javax.swing.JButton();
         buttonMenos = new javax.swing.JButton();
         buttonVezes = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonDivisao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -64,6 +68,8 @@ public class Program extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculadora");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         fieldResult.setEditable(false);
@@ -228,9 +234,9 @@ public class Program extends javax.swing.JFrame {
         buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(buttonVezes);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setText("÷");
-        jPanel3.add(jButton1);
+        buttonDivisao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonDivisao.setText("÷");
+        jPanel3.add(buttonDivisao);
 
         jMenu1.setText("Opções");
 
@@ -238,6 +244,11 @@ public class Program extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenu3.setText("Tema");
+        jMenu3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jMenu3StateChanged(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButtonMenuItem2);
         jRadioButtonMenuItem2.setSelected(true);
@@ -284,6 +295,7 @@ public class Program extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldResultActionPerformed
@@ -353,6 +365,10 @@ public class Program extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonMaisActionPerformed
 
+    private void jMenu3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu3StateChanged
+        
+    }//GEN-LAST:event_jMenu3StateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -382,7 +398,9 @@ public class Program extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
+                
                 new Program().setVisible(true);
             }
         });
@@ -390,6 +408,7 @@ public class Program extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonC;
+    private javax.swing.JButton buttonDivisao;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonIgual;
     private javax.swing.JButton buttonMais;
@@ -397,7 +416,6 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JButton buttonPonto;
     private javax.swing.JButton buttonVezes;
     private javax.swing.JTextField fieldResult;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -420,5 +438,6 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JButton numberButton8;
     private javax.swing.JButton numberButton9;
     // End of variables declaration//GEN-END:variables
+
 
 }
