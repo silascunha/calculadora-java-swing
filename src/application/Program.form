@@ -20,9 +20,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tema"/>
               </Properties>
-              <Events>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jMenu3FocusLost"/>
-              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JRadioButtonMenuItem" name="themeDefault">
                   <Properties>
@@ -292,6 +289,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPontoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="numberButton0">
           <Properties>

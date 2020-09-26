@@ -5,12 +5,7 @@
  */
 package application;
 
-import java.awt.Color;
-import java.awt.Shape;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonModel;
-import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -192,6 +187,11 @@ public class Program extends javax.swing.JFrame {
         buttonPonto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonPonto.setText(",");
         buttonPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPontoActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonPonto);
 
         numberButton0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -256,11 +256,6 @@ public class Program extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenu3.setText("Tema");
-        jMenu3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jMenu3FocusLost(evt);
-            }
-        });
 
         buttonGroup1.add(themeDefault);
         themeDefault.setSelected(true);
@@ -391,10 +386,6 @@ public class Program extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonMaisActionPerformed
 
-    private void jMenu3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jMenu3FocusLost
-        
-    }//GEN-LAST:event_jMenu3FocusLost
-
     private void themeDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDefaultActionPerformed
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -424,6 +415,15 @@ public class Program extends javax.swing.JFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }//GEN-LAST:event_themeMetalActionPerformed
+
+    private void buttonPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPontoActionPerformed
+        if (fieldResult.getText().equals("0") || nextNumber) {
+            fieldResult.setText("0.");
+            nextNumber = false;
+        } else if (!fieldResult.getText().contains(".")){
+            fieldResult.setText(fieldResult.getText() + ".");
+        }
+    }//GEN-LAST:event_buttonPontoActionPerformed
 
     /**
      * @param args the command line arguments

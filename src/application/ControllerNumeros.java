@@ -5,6 +5,7 @@
  */
 package application;
 
+import java.util.Locale;
 import javax.swing.JTextField;
 
 /**
@@ -31,8 +32,9 @@ public class ControllerNumeros {
     public static boolean hasDecimalPoint(double numberVal) {
         String aux = String.valueOf(numberVal);
         
-        if (aux.contains(",")) {
-            String[] vect = aux.split(",");
+        if (aux.contains(".")) {
+            String replace = aux.replace('.', ',');
+            String[] vect = replace.split(",");
             if (vect[1].equals("0")) return false;
             else return true;
         }
