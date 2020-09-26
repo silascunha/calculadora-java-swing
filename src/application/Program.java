@@ -5,7 +5,12 @@
  */
 package application;
 
+import java.awt.Color;
+import java.awt.Label;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ButtonModel;
+import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -19,20 +24,36 @@ public class Program extends javax.swing.JFrame {
     /**
      * Creates new form Program
      */
+    private List<JButton> buttons = new ArrayList<>();
+    private int selectedTheme = 0;
+
     public Program() {
         initComponents();
 
-        themeDefault.setActionCommand("Windows");
-        themeNimbus.setActionCommand("Nimbus");
-        themeMetal.setActionCommand("Metal");
-        selectedTheme = buttonGroup1.getSelection();
+        buttons.add(numberButton0);
+        buttons.add(numberButton1);
+        buttons.add(numberButton2);
+        buttons.add(numberButton3);
+        buttons.add(numberButton3);
+        buttons.add(numberButton4);
+        buttons.add(numberButton5);
+        buttons.add(numberButton6);
+        buttons.add(numberButton7);
+        buttons.add(numberButton8);
+        buttons.add(numberButton9);
+        buttons.add(buttonC);
+        buttons.add(buttonMais);
+        buttons.add(buttonMenos);
+        buttons.add(buttonDivisao);
+        buttons.add(buttonPonto);
+        buttons.add(buttonVezes);
+        buttons.add(buttonIgual);
     }
 
     //Número que será gerado nas ações dos botões
     public double numberVal = 0.0;
     public boolean nextNumber;
     public char option = ' ';
-    private ButtonModel selectedTheme;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +65,10 @@ public class Program extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        backgroundPane = new javax.swing.JPanel();
+        resultPane = new javax.swing.JPanel();
         fieldResult = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        numbersPane = new javax.swing.JPanel();
         numberButton7 = new javax.swing.JButton();
         numberButton8 = new javax.swing.JButton();
         numberButton9 = new javax.swing.JButton();
@@ -59,7 +81,7 @@ public class Program extends javax.swing.JFrame {
         buttonPonto = new javax.swing.JButton();
         numberButton0 = new javax.swing.JButton();
         buttonIgual = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        optionsPane = new javax.swing.JPanel();
         buttonC = new javax.swing.JButton();
         buttonMais = new javax.swing.JButton();
         buttonMenos = new javax.swing.JButton();
@@ -70,8 +92,7 @@ public class Program extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         themeDefault = new javax.swing.JRadioButtonMenuItem();
-        themeNimbus = new javax.swing.JRadioButtonMenuItem();
-        themeMetal = new javax.swing.JRadioButtonMenuItem();
+        themeDark = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,8 +100,15 @@ public class Program extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
+        backgroundPane.setBackground(new java.awt.Color(216, 216, 216));
+        backgroundPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        resultPane.setBackground(new java.awt.Color(216, 216, 216));
+
         fieldResult.setEditable(false);
+        fieldResult.setBackground(new java.awt.Color(204, 204, 204));
         fieldResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        fieldResult.setForeground(new java.awt.Color(0, 0, 0));
         fieldResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         fieldResult.setText("0");
         fieldResult.setPreferredSize(new java.awt.Dimension(260, 60));
@@ -89,12 +117,17 @@ public class Program extends javax.swing.JFrame {
                 fieldResultActionPerformed(evt);
             }
         });
-        jPanel1.add(fieldResult);
+        resultPane.add(fieldResult);
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
-        jPanel2.setLayout(new java.awt.GridLayout(4, 4));
+        backgroundPane.add(resultPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 301, 70));
 
+        numbersPane.setBackground(new java.awt.Color(216, 216, 216));
+        numbersPane.setPreferredSize(new java.awt.Dimension(200, 200));
+        numbersPane.setLayout(new java.awt.GridLayout(4, 4));
+
+        numberButton7.setBackground(new java.awt.Color(204, 204, 204));
         numberButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton7.setForeground(new java.awt.Color(0, 0, 0));
         numberButton7.setText("7");
         numberButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -102,9 +135,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton7ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton7);
+        numbersPane.add(numberButton7);
 
+        numberButton8.setBackground(new java.awt.Color(204, 204, 204));
         numberButton8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton8.setForeground(new java.awt.Color(0, 0, 0));
         numberButton8.setText("8");
         numberButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +147,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton8ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton8);
+        numbersPane.add(numberButton8);
 
+        numberButton9.setBackground(new java.awt.Color(204, 204, 204));
         numberButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton9.setForeground(new java.awt.Color(0, 0, 0));
         numberButton9.setText("9");
         numberButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -122,9 +159,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton9ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton9);
+        numbersPane.add(numberButton9);
 
+        numberButton4.setBackground(new java.awt.Color(204, 204, 204));
         numberButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton4.setForeground(new java.awt.Color(0, 0, 0));
         numberButton4.setText("4");
         numberButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +171,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton4);
+        numbersPane.add(numberButton4);
 
+        numberButton5.setBackground(new java.awt.Color(204, 204, 204));
         numberButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton5.setForeground(new java.awt.Color(0, 0, 0));
         numberButton5.setText("5");
         numberButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -142,9 +183,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton5ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton5);
+        numbersPane.add(numberButton5);
 
+        numberButton6.setBackground(new java.awt.Color(204, 204, 204));
         numberButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton6.setForeground(new java.awt.Color(0, 0, 0));
         numberButton6.setText("6");
         numberButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -152,9 +195,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton6);
+        numbersPane.add(numberButton6);
 
+        numberButton1.setBackground(new java.awt.Color(204, 204, 204));
         numberButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton1.setForeground(new java.awt.Color(0, 0, 0));
         numberButton1.setText("1");
         numberButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -162,9 +207,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton1);
+        numbersPane.add(numberButton1);
 
+        numberButton2.setBackground(new java.awt.Color(204, 204, 204));
         numberButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton2.setForeground(new java.awt.Color(0, 0, 0));
         numberButton2.setText("2");
         numberButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -172,9 +219,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton2);
+        numbersPane.add(numberButton2);
 
+        numberButton3.setBackground(new java.awt.Color(204, 204, 204));
         numberButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton3.setForeground(new java.awt.Color(0, 0, 0));
         numberButton3.setText("3");
         numberButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -182,9 +231,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton3);
+        numbersPane.add(numberButton3);
 
+        buttonPonto.setBackground(new java.awt.Color(204, 204, 204));
         buttonPonto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonPonto.setForeground(new java.awt.Color(0, 0, 0));
         buttonPonto.setText(",");
         buttonPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPonto.addActionListener(new java.awt.event.ActionListener() {
@@ -192,9 +243,11 @@ public class Program extends javax.swing.JFrame {
                 buttonPontoActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonPonto);
+        numbersPane.add(buttonPonto);
 
+        numberButton0.setBackground(new java.awt.Color(204, 204, 204));
         numberButton0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        numberButton0.setForeground(new java.awt.Color(0, 0, 0));
         numberButton0.setText("0");
         numberButton0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         numberButton0.addActionListener(new java.awt.event.ActionListener() {
@@ -202,9 +255,11 @@ public class Program extends javax.swing.JFrame {
                 numberButton0ActionPerformed(evt);
             }
         });
-        jPanel2.add(numberButton0);
+        numbersPane.add(numberButton0);
 
+        buttonIgual.setBackground(new java.awt.Color(204, 204, 204));
         buttonIgual.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonIgual.setForeground(new java.awt.Color(0, 0, 0));
         buttonIgual.setText("=");
         buttonIgual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonIgual.addActionListener(new java.awt.event.ActionListener() {
@@ -212,11 +267,16 @@ public class Program extends javax.swing.JFrame {
                 buttonIgualActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonIgual);
+        numbersPane.add(buttonIgual);
 
-        jPanel3.setLayout(new java.awt.GridLayout(5, 0));
+        backgroundPane.add(numbersPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 94, 230, 300));
 
+        optionsPane.setBackground(new java.awt.Color(216, 216, 216));
+        optionsPane.setLayout(new java.awt.GridLayout(5, 0));
+
+        buttonC.setBackground(new java.awt.Color(204, 204, 204));
         buttonC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonC.setForeground(new java.awt.Color(0, 0, 0));
         buttonC.setText("C");
         buttonC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonC.addActionListener(new java.awt.event.ActionListener() {
@@ -224,9 +284,11 @@ public class Program extends javax.swing.JFrame {
                 buttonCActionPerformed(evt);
             }
         });
-        jPanel3.add(buttonC);
+        optionsPane.add(buttonC);
 
+        buttonMais.setBackground(new java.awt.Color(204, 204, 204));
         buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMais.setForeground(new java.awt.Color(0, 0, 0));
         buttonMais.setText("+");
         buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMais.addActionListener(new java.awt.event.ActionListener() {
@@ -234,9 +296,11 @@ public class Program extends javax.swing.JFrame {
                 buttonMaisActionPerformed(evt);
             }
         });
-        jPanel3.add(buttonMais);
+        optionsPane.add(buttonMais);
 
+        buttonMenos.setBackground(new java.awt.Color(204, 204, 204));
         buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMenos.setForeground(new java.awt.Color(0, 0, 0));
         buttonMenos.setText("-");
         buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMenos.addActionListener(new java.awt.event.ActionListener() {
@@ -244,9 +308,11 @@ public class Program extends javax.swing.JFrame {
                 buttonMenosActionPerformed(evt);
             }
         });
-        jPanel3.add(buttonMenos);
+        optionsPane.add(buttonMenos);
 
+        buttonVezes.setBackground(new java.awt.Color(204, 204, 204));
         buttonVezes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonVezes.setForeground(new java.awt.Color(0, 0, 0));
         buttonVezes.setText("x");
         buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonVezes.addActionListener(new java.awt.event.ActionListener() {
@@ -254,16 +320,20 @@ public class Program extends javax.swing.JFrame {
                 buttonVezesActionPerformed(evt);
             }
         });
-        jPanel3.add(buttonVezes);
+        optionsPane.add(buttonVezes);
 
+        buttonDivisao.setBackground(new java.awt.Color(204, 204, 204));
         buttonDivisao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonDivisao.setForeground(new java.awt.Color(0, 0, 0));
         buttonDivisao.setText("÷");
         buttonDivisao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDivisaoActionPerformed(evt);
             }
         });
-        jPanel3.add(buttonDivisao);
+        optionsPane.add(buttonDivisao);
+
+        backgroundPane.add(optionsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 96, 60, 290));
 
         jMenu1.setText("Opções");
 
@@ -282,23 +352,14 @@ public class Program extends javax.swing.JFrame {
         });
         jMenu3.add(themeDefault);
 
-        buttonGroup1.add(themeNimbus);
-        themeNimbus.setText("Nimbus");
-        themeNimbus.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(themeDark);
+        themeDark.setText("Dark");
+        themeDark.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themeNimbusActionPerformed(evt);
+                themeDarkActionPerformed(evt);
             }
         });
-        jMenu3.add(themeNimbus);
-
-        buttonGroup1.add(themeMetal);
-        themeMetal.setText("Metal");
-        themeMetal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themeMetalActionPerformed(evt);
-            }
-        });
-        jMenu3.add(themeMetal);
+        jMenu3.add(themeDark);
 
         jMenu1.add(jMenu3);
 
@@ -313,22 +374,15 @@ public class Program extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 301, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(backgroundPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 406, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(backgroundPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,40 +467,42 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMaisActionPerformed
 
     private void themeDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDefaultActionPerformed
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            SwingUtilities.updateComponentTreeUI(this);
-            selectedTheme = buttonGroup1.getSelection();
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            System.out.println("Error: " + e.getMessage());
+        if (selectedTheme != 0) {
+            selectedTheme = 0;
+            for (JButton b : buttons) {
+                b.setBackground(new Color(204, 204, 204));
+                b.setForeground(new Color(0, 0, 0));
+            }
+            fieldResult.setBackground(new Color(204, 204, 204));
+            fieldResult.setForeground(new Color(0, 0, 0));
+            backgroundPane.setBackground(new Color(216, 216, 216));
+            numbersPane.setBackground(new Color(216, 216, 216));
+            resultPane.setBackground(new Color(216, 216, 216));
+            optionsPane.setBackground(new Color(216, 216, 216));
         }
     }//GEN-LAST:event_themeDefaultActionPerformed
 
-    private void themeNimbusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeNimbusActionPerformed
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-            SwingUtilities.updateComponentTreeUI(this);
-            selectedTheme = buttonGroup1.getSelection();
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            System.out.println("Error: " + e.getMessage());
+    private void themeDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDarkActionPerformed
+        if (selectedTheme != 1) {
+            selectedTheme = 1;
+            for (JButton b : buttons) {
+                b.setBackground(new Color(10, 10, 10));
+                b.setForeground(new Color(230, 230, 230));
+            }
+            fieldResult.setBackground(new Color(40, 40, 10));
+            fieldResult.setForeground(new Color(230, 230, 230));
+            backgroundPane.setBackground(new Color(45, 45, 45));
+            numbersPane.setBackground(new Color(45, 45, 45));
+            resultPane.setBackground(new Color(45, 45, 45));
+            optionsPane.setBackground(new Color(45, 45, 45));
         }
-    }//GEN-LAST:event_themeNimbusActionPerformed
-
-    private void themeMetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeMetalActionPerformed
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-            SwingUtilities.updateComponentTreeUI(this);
-            selectedTheme = buttonGroup1.getSelection();
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }//GEN-LAST:event_themeMetalActionPerformed
+    }//GEN-LAST:event_themeDarkActionPerformed
 
     private void buttonPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPontoActionPerformed
         if (fieldResult.getText().equals("0") || nextNumber) {
             fieldResult.setText("0.");
             nextNumber = false;
-        } else if (!fieldResult.getText().contains(".")){
+        } else if (!fieldResult.getText().contains(".")) {
             fieldResult.setText(fieldResult.getText() + ".");
         }
     }//GEN-LAST:event_buttonPontoActionPerformed
@@ -504,7 +560,7 @@ public class Program extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -531,6 +587,7 @@ public class Program extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backgroundPane;
     private javax.swing.JButton buttonC;
     private javax.swing.JButton buttonDivisao;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -545,9 +602,6 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton numberButton0;
     private javax.swing.JButton numberButton1;
     private javax.swing.JButton numberButton2;
@@ -558,9 +612,11 @@ public class Program extends javax.swing.JFrame {
     private javax.swing.JButton numberButton7;
     private javax.swing.JButton numberButton8;
     private javax.swing.JButton numberButton9;
+    private javax.swing.JPanel numbersPane;
+    private javax.swing.JPanel optionsPane;
+    private javax.swing.JPanel resultPane;
+    private javax.swing.JRadioButtonMenuItem themeDark;
     private javax.swing.JRadioButtonMenuItem themeDefault;
-    private javax.swing.JRadioButtonMenuItem themeMetal;
-    private javax.swing.JRadioButtonMenuItem themeNimbus;
     // End of variables declaration//GEN-END:variables
 
 }
