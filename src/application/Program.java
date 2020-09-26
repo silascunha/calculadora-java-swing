@@ -239,15 +239,30 @@ public class Program extends javax.swing.JFrame {
         buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonMenos.setText("-");
         buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMenosActionPerformed(evt);
+            }
+        });
         jPanel3.add(buttonMenos);
 
         buttonVezes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonVezes.setText("x");
         buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonVezes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVezesActionPerformed(evt);
+            }
+        });
         jPanel3.add(buttonVezes);
 
         buttonDivisao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         buttonDivisao.setText("÷");
+        buttonDivisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDivisaoActionPerformed(evt);
+            }
+        });
         jPanel3.add(buttonDivisao);
 
         jMenu1.setText("Opções");
@@ -329,7 +344,17 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_numberButton1ActionPerformed
 
     private void buttonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIgualActionPerformed
-
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
+            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '=';
+            nextNumber = true;
+        }
     }//GEN-LAST:event_buttonIgualActionPerformed
 
     private void buttonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCActionPerformed
@@ -425,6 +450,48 @@ public class Program extends javax.swing.JFrame {
             fieldResult.setText(fieldResult.getText() + ".");
         }
     }//GEN-LAST:event_buttonPontoActionPerformed
+
+    private void buttonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenosActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
+            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '-';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonMenosActionPerformed
+
+    private void buttonVezesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVezesActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
+            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '*';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonVezesActionPerformed
+
+    private void buttonDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivisaoActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
+            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '/';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonDivisaoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -368,6 +368,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMenosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonVezes">
           <Properties>
@@ -379,6 +382,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVezesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonDivisao">
           <Properties>
@@ -387,6 +393,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xf7;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDivisaoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
