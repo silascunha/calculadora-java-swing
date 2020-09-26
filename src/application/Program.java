@@ -31,7 +31,7 @@ public class Program extends javax.swing.JFrame {
     //Número que será gerado nas ações dos botões
     public double numberVal = 0.0;
     public boolean nextNumber;
-    public Character option = null;
+    public char option = ' ';
     private ButtonModel selectedTheme;
 
     /**
@@ -375,13 +375,14 @@ public class Program extends javax.swing.JFrame {
 
     private void buttonMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMaisActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
-
-            numberVal = numberVal + Double.parseDouble(fieldResult.getText());
+            String strValue2 = fieldResult.getText();
+            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
             if (ControllerNumeros.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
             }
+            option = '+';
             nextNumber = true;
         }
     }//GEN-LAST:event_buttonMaisActionPerformed

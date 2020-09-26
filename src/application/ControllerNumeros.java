@@ -13,6 +13,31 @@ import javax.swing.JTextField;
  * @author silas
  */
 public class ControllerNumeros {
+    
+    /**
+     *
+     * @param value1
+     * @param strValue2
+     * @param option
+     * @return
+     */
+    public static double calculate(double value1, String strValue2, Character option) {
+        double value2 = Double.parseDouble(strValue2);
+        
+        switch (option) {
+            case '+':
+                return value1 + value2;
+            case '-':
+                return value1 - value2;
+            case '*':
+                return value1 * value2;
+            case '/':
+                return value1 / value2;
+            default:
+                return value2;
+        }
+        
+    }
 
     public static boolean numbersButtons(JTextField field, String number, boolean nextNumber) {
         if (field.getText().equals("0")) {
@@ -29,6 +54,7 @@ public class ControllerNumeros {
         }
         return false;
     }
+    
     public static boolean hasDecimalPoint(double numberVal) {
         String aux = String.valueOf(numberVal);
         
