@@ -6,14 +6,15 @@
 package application;
 
 import java.awt.Color;
-import java.awt.Label;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import java.util.Properties;
 
 /**
  *
@@ -25,7 +26,8 @@ public class Program extends javax.swing.JFrame {
      * Creates new form Program
      */
     private List<JButton> buttons = new ArrayList<>();
-    private int selectedTheme = 0;
+    private static String selectedTheme;
+    private static final String THEME_PATH = "theme.properties";
 
     public Program() {
         initComponents();
@@ -42,12 +44,37 @@ public class Program extends javax.swing.JFrame {
         buttons.add(numberButton8);
         buttons.add(numberButton9);
         buttons.add(buttonC);
-        buttons.add(buttonMais);
-        buttons.add(buttonMenos);
-        buttons.add(buttonDivisao);
-        buttons.add(buttonPonto);
-        buttons.add(buttonVezes);
-        buttons.add(buttonIgual);
+        buttons.add(buttonPlus);
+        buttons.add(buttonMinus);
+        buttons.add(buttonDivision);
+        buttons.add(buttonPoint);
+        buttons.add(buttonMultiplication);
+        buttons.add(buttonEquals);
+
+        try ( InputStream input = new FileInputStream("theme.properties")) {
+
+            Properties prop = new Properties();
+            prop.load(input);
+            selectedTheme = prop.getProperty("selected-theme");
+            if (selectedTheme.equals("0")) {
+                themeDefault.setSelected(true);
+            } else {
+                themeDark.setSelected(true);
+            }
+            chooseTheme(selectedTheme);
+
+        } catch (IOException e) {
+            System.out.println("Trying to create properties file.");
+            try (OutputStream output = new FileOutputStream("theme.properties")) {
+                Properties prop = new Properties();
+                prop.setProperty("selected-theme", "0");
+                prop.store(output, null);
+                selectedTheme = "0";
+                
+            } catch (IOException e2) {
+                System.out.println("Error: "+ e.getMessage());
+            }
+        }
     }
 
     //Número que será gerado nas ações dos botões
@@ -78,22 +105,20 @@ public class Program extends javax.swing.JFrame {
         numberButton1 = new javax.swing.JButton();
         numberButton2 = new javax.swing.JButton();
         numberButton3 = new javax.swing.JButton();
-        buttonPonto = new javax.swing.JButton();
+        buttonPoint = new javax.swing.JButton();
         numberButton0 = new javax.swing.JButton();
-        buttonIgual = new javax.swing.JButton();
+        buttonEquals = new javax.swing.JButton();
         optionsPane = new javax.swing.JPanel();
         buttonC = new javax.swing.JButton();
-        buttonMais = new javax.swing.JButton();
-        buttonMenos = new javax.swing.JButton();
-        buttonVezes = new javax.swing.JButton();
-        buttonDivisao = new javax.swing.JButton();
+        buttonPlus = new javax.swing.JButton();
+        buttonMinus = new javax.swing.JButton();
+        buttonMultiplication = new javax.swing.JButton();
+        buttonDivision = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         themeDefault = new javax.swing.JRadioButtonMenuItem();
         themeDark = new javax.swing.JRadioButtonMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora");
@@ -233,17 +258,17 @@ public class Program extends javax.swing.JFrame {
         });
         numbersPane.add(numberButton3);
 
-        buttonPonto.setBackground(new java.awt.Color(204, 204, 204));
-        buttonPonto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonPonto.setForeground(new java.awt.Color(0, 0, 0));
-        buttonPonto.setText(",");
-        buttonPonto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonPonto.addActionListener(new java.awt.event.ActionListener() {
+        buttonPoint.setBackground(new java.awt.Color(204, 204, 204));
+        buttonPoint.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonPoint.setForeground(new java.awt.Color(0, 0, 0));
+        buttonPoint.setText(".");
+        buttonPoint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPontoActionPerformed(evt);
+                buttonPointActionPerformed(evt);
             }
         });
-        numbersPane.add(buttonPonto);
+        numbersPane.add(buttonPoint);
 
         numberButton0.setBackground(new java.awt.Color(204, 204, 204));
         numberButton0.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -257,17 +282,17 @@ public class Program extends javax.swing.JFrame {
         });
         numbersPane.add(numberButton0);
 
-        buttonIgual.setBackground(new java.awt.Color(204, 204, 204));
-        buttonIgual.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonIgual.setForeground(new java.awt.Color(0, 0, 0));
-        buttonIgual.setText("=");
-        buttonIgual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonIgual.addActionListener(new java.awt.event.ActionListener() {
+        buttonEquals.setBackground(new java.awt.Color(204, 204, 204));
+        buttonEquals.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonEquals.setForeground(new java.awt.Color(0, 0, 0));
+        buttonEquals.setText("=");
+        buttonEquals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonEquals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonIgualActionPerformed(evt);
+                buttonEqualsActionPerformed(evt);
             }
         });
-        numbersPane.add(buttonIgual);
+        numbersPane.add(buttonEquals);
 
         backgroundPane.add(numbersPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 94, 230, 300));
 
@@ -286,59 +311,57 @@ public class Program extends javax.swing.JFrame {
         });
         optionsPane.add(buttonC);
 
-        buttonMais.setBackground(new java.awt.Color(204, 204, 204));
-        buttonMais.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonMais.setForeground(new java.awt.Color(0, 0, 0));
-        buttonMais.setText("+");
-        buttonMais.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonMais.addActionListener(new java.awt.event.ActionListener() {
+        buttonPlus.setBackground(new java.awt.Color(204, 204, 204));
+        buttonPlus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonPlus.setForeground(new java.awt.Color(0, 0, 0));
+        buttonPlus.setText("+");
+        buttonPlus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPlus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMaisActionPerformed(evt);
+                buttonPlusActionPerformed(evt);
             }
         });
-        optionsPane.add(buttonMais);
+        optionsPane.add(buttonPlus);
 
-        buttonMenos.setBackground(new java.awt.Color(204, 204, 204));
-        buttonMenos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonMenos.setForeground(new java.awt.Color(0, 0, 0));
-        buttonMenos.setText("-");
-        buttonMenos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonMenos.addActionListener(new java.awt.event.ActionListener() {
+        buttonMinus.setBackground(new java.awt.Color(204, 204, 204));
+        buttonMinus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMinus.setForeground(new java.awt.Color(0, 0, 0));
+        buttonMinus.setText("-");
+        buttonMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMinus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenosActionPerformed(evt);
+                buttonMinusActionPerformed(evt);
             }
         });
-        optionsPane.add(buttonMenos);
+        optionsPane.add(buttonMinus);
 
-        buttonVezes.setBackground(new java.awt.Color(204, 204, 204));
-        buttonVezes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonVezes.setForeground(new java.awt.Color(0, 0, 0));
-        buttonVezes.setText("x");
-        buttonVezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonVezes.addActionListener(new java.awt.event.ActionListener() {
+        buttonMultiplication.setBackground(new java.awt.Color(204, 204, 204));
+        buttonMultiplication.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonMultiplication.setForeground(new java.awt.Color(0, 0, 0));
+        buttonMultiplication.setText("x");
+        buttonMultiplication.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMultiplication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVezesActionPerformed(evt);
+                buttonMultiplicationActionPerformed(evt);
             }
         });
-        optionsPane.add(buttonVezes);
+        optionsPane.add(buttonMultiplication);
 
-        buttonDivisao.setBackground(new java.awt.Color(204, 204, 204));
-        buttonDivisao.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        buttonDivisao.setForeground(new java.awt.Color(0, 0, 0));
-        buttonDivisao.setText("÷");
-        buttonDivisao.addActionListener(new java.awt.event.ActionListener() {
+        buttonDivision.setBackground(new java.awt.Color(204, 204, 204));
+        buttonDivision.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buttonDivision.setForeground(new java.awt.Color(0, 0, 0));
+        buttonDivision.setText("÷");
+        buttonDivision.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDivisaoActionPerformed(evt);
+                buttonDivisionActionPerformed(evt);
             }
         });
-        optionsPane.add(buttonDivisao);
+        optionsPane.add(buttonDivision);
 
         backgroundPane.add(optionsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 96, 60, 290));
 
         jMenu1.setText("Opções");
-
-        jMenuItem1.setText("Opção 1");
-        jMenu1.add(jMenuItem1);
 
         jMenu3.setText("Tema");
 
@@ -364,9 +387,6 @@ public class Program extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Sobre");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -394,14 +414,14 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldResultActionPerformed
 
     private void numberButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton1ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "1", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "1", nextNumber);
     }//GEN-LAST:event_numberButton1ActionPerformed
 
-    private void buttonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIgualActionPerformed
+    private void buttonEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEqualsActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
-            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
+            if (NumbersChecking.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -409,7 +429,7 @@ public class Program extends javax.swing.JFrame {
             option = '=';
             nextNumber = true;
         }
-    }//GEN-LAST:event_buttonIgualActionPerformed
+    }//GEN-LAST:event_buttonEqualsActionPerformed
 
     private void buttonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCActionPerformed
         fieldResult.setText("0");
@@ -417,46 +437,46 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCActionPerformed
 
     private void numberButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton2ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "2", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "2", nextNumber);
     }//GEN-LAST:event_numberButton2ActionPerformed
 
     private void numberButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton3ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "3", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "3", nextNumber);
     }//GEN-LAST:event_numberButton3ActionPerformed
 
     private void numberButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton4ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "4", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "4", nextNumber);
     }//GEN-LAST:event_numberButton4ActionPerformed
 
     private void numberButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton5ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "5", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "5", nextNumber);
     }//GEN-LAST:event_numberButton5ActionPerformed
 
     private void numberButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton6ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "6", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "6", nextNumber);
     }//GEN-LAST:event_numberButton6ActionPerformed
 
     private void numberButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton7ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "7", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "7", nextNumber);
     }//GEN-LAST:event_numberButton7ActionPerformed
 
     private void numberButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton8ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "8", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "8", nextNumber);
     }//GEN-LAST:event_numberButton8ActionPerformed
 
     private void numberButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton9ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "9", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "9", nextNumber);
     }//GEN-LAST:event_numberButton9ActionPerformed
 
     private void numberButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton0ActionPerformed
-        nextNumber = ControllerNumeros.numbersButtons(fieldResult, "0", nextNumber);
+        nextNumber = NumbersChecking.numbersButtons(fieldResult, "0", nextNumber);
     }//GEN-LAST:event_numberButton0ActionPerformed
 
-    private void buttonMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMaisActionPerformed
+    private void buttonPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlusActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
-            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
+            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
+            if (NumbersChecking.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -464,11 +484,73 @@ public class Program extends javax.swing.JFrame {
             option = '+';
             nextNumber = true;
         }
-    }//GEN-LAST:event_buttonMaisActionPerformed
+    }//GEN-LAST:event_buttonPlusActionPerformed
 
     private void themeDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDefaultActionPerformed
-        if (selectedTheme != 0) {
-            selectedTheme = 0;
+        if (!selectedTheme.equals("0")) {
+            chooseTheme("0");
+        }
+    }//GEN-LAST:event_themeDefaultActionPerformed
+
+    private void themeDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDarkActionPerformed
+        if (!selectedTheme.equals("1")) {
+            chooseTheme("1");
+        }
+    }//GEN-LAST:event_themeDarkActionPerformed
+
+    private void buttonPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPointActionPerformed
+        if (fieldResult.getText().equals("0") || nextNumber) {
+            fieldResult.setText("0.");
+            nextNumber = false;
+        } else if (!fieldResult.getText().contains(".")) {
+            fieldResult.setText(fieldResult.getText() + ".");
+        }
+    }//GEN-LAST:event_buttonPointActionPerformed
+
+    private void buttonMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinusActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
+            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '-';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonMinusActionPerformed
+
+    private void buttonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMultiplicationActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
+            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '*';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonMultiplicationActionPerformed
+
+    private void buttonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivisionActionPerformed
+        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
+            String strValue2 = fieldResult.getText();
+            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
+            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+                fieldResult.setText(String.valueOf(numberVal));
+            } else {
+                fieldResult.setText(String.valueOf((int) numberVal));
+            }
+            option = '/';
+            nextNumber = true;
+        }
+    }//GEN-LAST:event_buttonDivisionActionPerformed
+
+    private void chooseTheme(String theme) {
+        if (theme.equals("0")) {
             for (JButton b : buttons) {
                 b.setBackground(new Color(204, 204, 204));
                 b.setForeground(new Color(0, 0, 0));
@@ -479,75 +561,38 @@ public class Program extends javax.swing.JFrame {
             numbersPane.setBackground(new Color(216, 216, 216));
             resultPane.setBackground(new Color(216, 216, 216));
             optionsPane.setBackground(new Color(216, 216, 216));
-        }
-    }//GEN-LAST:event_themeDefaultActionPerformed
 
-    private void themeDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeDarkActionPerformed
-        if (selectedTheme != 1) {
-            selectedTheme = 1;
+            try (OutputStream output = new FileOutputStream("theme.properties")) {
+                Properties prop = new Properties();
+                prop.setProperty("selected-theme", "0");
+                prop.store(output, null);
+                selectedTheme = prop.getProperty("selected-theme");
+            } catch (IOException e) {
+                System.out.println("Error to open file: " + e.getMessage());
+            }
+        }
+        if (theme.equals("1")) {
             for (JButton b : buttons) {
                 b.setBackground(new Color(10, 10, 10));
                 b.setForeground(new Color(230, 230, 230));
             }
-            fieldResult.setBackground(new Color(40, 40, 10));
+            fieldResult.setBackground(new Color(55, 55, 55));
             fieldResult.setForeground(new Color(230, 230, 230));
             backgroundPane.setBackground(new Color(45, 45, 45));
             numbersPane.setBackground(new Color(45, 45, 45));
             resultPane.setBackground(new Color(45, 45, 45));
             optionsPane.setBackground(new Color(45, 45, 45));
-        }
-    }//GEN-LAST:event_themeDarkActionPerformed
 
-    private void buttonPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPontoActionPerformed
-        if (fieldResult.getText().equals("0") || nextNumber) {
-            fieldResult.setText("0.");
-            nextNumber = false;
-        } else if (!fieldResult.getText().contains(".")) {
-            fieldResult.setText(fieldResult.getText() + ".");
-        }
-    }//GEN-LAST:event_buttonPontoActionPerformed
-
-    private void buttonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenosActionPerformed
-        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
-            String strValue2 = fieldResult.getText();
-            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
-            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
-                fieldResult.setText(String.valueOf(numberVal));
-            } else {
-                fieldResult.setText(String.valueOf((int) numberVal));
+            try ( OutputStream output = new FileOutputStream("theme.properties")) {
+                Properties prop = new Properties();
+                prop.setProperty("selected-theme", "1");
+                prop.store(output, null);
+                selectedTheme = prop.getProperty("selected-theme");
+            } catch (IOException e) {
+                System.out.println("Error to open file: " + e.getMessage());
             }
-            option = '-';
-            nextNumber = true;
         }
-    }//GEN-LAST:event_buttonMenosActionPerformed
-
-    private void buttonVezesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVezesActionPerformed
-        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
-            String strValue2 = fieldResult.getText();
-            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
-            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
-                fieldResult.setText(String.valueOf(numberVal));
-            } else {
-                fieldResult.setText(String.valueOf((int) numberVal));
-            }
-            option = '*';
-            nextNumber = true;
-        }
-    }//GEN-LAST:event_buttonVezesActionPerformed
-
-    private void buttonDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivisaoActionPerformed
-        if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
-            String strValue2 = fieldResult.getText();
-            numberVal = ControllerNumeros.calculate(numberVal, strValue2, option);
-            if (ControllerNumeros.hasDecimalPoint(numberVal)) {
-                fieldResult.setText(String.valueOf(numberVal));
-            } else {
-                fieldResult.setText(String.valueOf((int) numberVal));
-            }
-            option = '/';
-            nextNumber = true;
-        }
-    }//GEN-LAST:event_buttonDivisaoActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -589,19 +634,17 @@ public class Program extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPane;
     private javax.swing.JButton buttonC;
-    private javax.swing.JButton buttonDivisao;
+    private javax.swing.JButton buttonDivision;
+    private javax.swing.JButton buttonEquals;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton buttonIgual;
-    private javax.swing.JButton buttonMais;
-    private javax.swing.JButton buttonMenos;
-    private javax.swing.JButton buttonPonto;
-    private javax.swing.JButton buttonVezes;
+    private javax.swing.JButton buttonMinus;
+    private javax.swing.JButton buttonMultiplication;
+    private javax.swing.JButton buttonPlus;
+    private javax.swing.JButton buttonPoint;
     private javax.swing.JTextField fieldResult;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton numberButton0;
     private javax.swing.JButton numberButton1;
     private javax.swing.JButton numberButton2;

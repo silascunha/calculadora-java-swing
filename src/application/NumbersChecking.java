@@ -12,7 +12,7 @@ import javax.swing.JTextField;
  *
  * @author silas
  */
-public class ControllerNumeros {
+public class NumbersChecking {
     
     /**
      *
