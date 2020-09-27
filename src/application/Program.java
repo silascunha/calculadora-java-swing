@@ -51,7 +51,7 @@ public class Program extends javax.swing.JFrame {
         buttons.add(buttonMultiplication);
         buttons.add(buttonEquals);
 
-        try ( InputStream input = new FileInputStream("theme.properties")) {
+        try ( InputStream input = new FileInputStream(THEME_PATH)) {
 
             Properties prop = new Properties();
             prop.load(input);
@@ -65,7 +65,7 @@ public class Program extends javax.swing.JFrame {
 
         } catch (IOException e) {
             System.out.println("Trying to create properties file.");
-            try (OutputStream output = new FileOutputStream("theme.properties")) {
+            try (OutputStream output = new FileOutputStream(THEME_PATH)) {
                 Properties prop = new Properties();
                 prop.setProperty("selected-theme", "0");
                 prop.store(output, null);
@@ -562,7 +562,7 @@ public class Program extends javax.swing.JFrame {
             resultPane.setBackground(new Color(216, 216, 216));
             optionsPane.setBackground(new Color(216, 216, 216));
 
-            try (OutputStream output = new FileOutputStream("theme.properties")) {
+            try (OutputStream output = new FileOutputStream(THEME_PATH)) {
                 Properties prop = new Properties();
                 prop.setProperty("selected-theme", "0");
                 prop.store(output, null);
@@ -583,7 +583,7 @@ public class Program extends javax.swing.JFrame {
             resultPane.setBackground(new Color(45, 45, 45));
             optionsPane.setBackground(new Color(45, 45, 45));
 
-            try ( OutputStream output = new FileOutputStream("theme.properties")) {
+            try ( OutputStream output = new FileOutputStream(THEME_PATH)) {
                 Properties prop = new Properties();
                 prop.setProperty("selected-theme", "1");
                 prop.store(output, null);
