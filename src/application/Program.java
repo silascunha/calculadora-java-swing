@@ -28,6 +28,7 @@ public class Program extends javax.swing.JFrame {
     private List<JButton> buttons = new ArrayList<>();
     private static String selectedTheme;
     private static final String THEME_PATH = "theme.properties";
+    private Calculator calculator = Calculator.getInstance();
 
     public Program() {
         initComponents();
@@ -414,14 +415,14 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldResultActionPerformed
 
     private void numberButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton1ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "1", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "1", nextNumber);
     }//GEN-LAST:event_numberButton1ActionPerformed
 
     private void buttonEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEqualsActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
-            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+            numberVal = calculator.calculate(numberVal, strValue2, option);
+            if (calculator.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -437,46 +438,46 @@ public class Program extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCActionPerformed
 
     private void numberButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton2ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "2", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "2", nextNumber);
     }//GEN-LAST:event_numberButton2ActionPerformed
 
     private void numberButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton3ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "3", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "3", nextNumber);
     }//GEN-LAST:event_numberButton3ActionPerformed
 
     private void numberButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton4ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "4", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "4", nextNumber);
     }//GEN-LAST:event_numberButton4ActionPerformed
 
     private void numberButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton5ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "5", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "5", nextNumber);
     }//GEN-LAST:event_numberButton5ActionPerformed
 
     private void numberButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton6ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "6", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "6", nextNumber);
     }//GEN-LAST:event_numberButton6ActionPerformed
 
     private void numberButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton7ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "7", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "7", nextNumber);
     }//GEN-LAST:event_numberButton7ActionPerformed
 
     private void numberButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton8ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "8", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "8", nextNumber);
     }//GEN-LAST:event_numberButton8ActionPerformed
 
     private void numberButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton9ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "9", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "9", nextNumber);
     }//GEN-LAST:event_numberButton9ActionPerformed
 
     private void numberButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberButton0ActionPerformed
-        nextNumber = NumbersChecking.numbersButtons(fieldResult, "0", nextNumber);
+        nextNumber = calculator.numbersButtons(fieldResult, "0", nextNumber);
     }//GEN-LAST:event_numberButton0ActionPerformed
 
     private void buttonPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlusActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
-            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+            numberVal = calculator.calculate(numberVal, strValue2, option);
+            if (calculator.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -510,8 +511,8 @@ public class Program extends javax.swing.JFrame {
     private void buttonMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinusActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
-            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+            numberVal = calculator.calculate(numberVal, strValue2, option);
+            if (calculator.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -524,8 +525,8 @@ public class Program extends javax.swing.JFrame {
     private void buttonMultiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMultiplicationActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
-            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+            numberVal = calculator.calculate(numberVal, strValue2, option);
+            if (calculator.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
@@ -538,8 +539,8 @@ public class Program extends javax.swing.JFrame {
     private void buttonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivisionActionPerformed
         if (!fieldResult.getText().equals("0") && fieldResult.getText() != null) {
             String strValue2 = fieldResult.getText();
-            numberVal = NumbersChecking.calculate(numberVal, strValue2, option);
-            if (NumbersChecking.hasDecimalPoint(numberVal)) {
+            numberVal = calculator.calculate(numberVal, strValue2, option);
+            if (calculator.hasDecimalPoint(numberVal)) {
                 fieldResult.setText(String.valueOf(numberVal));
             } else {
                 fieldResult.setText(String.valueOf((int) numberVal));
